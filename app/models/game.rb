@@ -18,8 +18,8 @@ class Game < ActiveRecord::Base
   end
 
   def night_game?
-    return false if @time < 1700
-    true
+    return true if @time > 1700
+    false
   end
 
   def same_series?(game)
