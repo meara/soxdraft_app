@@ -1,5 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  let(:the_best_team) { Team.new('Chicago', 'White Sox', :chi, :al) }
+
+  it 'has a readable city' do
+    expect(the_best_team.city).to eq 'Chicago'
+  end
+  
+  it 'has a readable name' do
+    expect(the_best_team.name).to eq 'White Sox'
+  end
+  
+  it 'has a readable symbol' do
+    expect(the_best_team.symbol).to eq :chi
+  end
+
+  it 'has a readable league' do
+    expect(the_best_team.league).to eq :al
+  end
+
 end
