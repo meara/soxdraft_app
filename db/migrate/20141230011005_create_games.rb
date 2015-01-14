@@ -1,7 +1,7 @@
 class CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
-      t.datetime :date_time
+      t.datetime :game_time
       t.string :home
       t.string :away
       t.string :up

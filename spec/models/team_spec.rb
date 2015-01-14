@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
   
-  let(:the_best_team) { Team.new('Chicago', 'White Sox', :chi, :al) }
+  let(:the_best_team) { Team.new(city: 'Chicago', name: 'White Sox', symbol: :chi, league: :al) }
 
   it 'has a readable city' do
     expect(the_best_team.city).to eq 'Chicago'
