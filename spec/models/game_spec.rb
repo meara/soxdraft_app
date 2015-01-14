@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Game, :type => :model do
 
-  let(:sunday_game) { Game.new(Date.new(2014,12,21), 1205, :min, 2) }
-  let(:saturday_game) { Game.new(Date.new(2014,12,20), 1305, :min, 2) }
-  let(:thursday_night_game) { Game.new(Date.new(2014,12,18), 1705, :min, 3)}
+  let(:sunday_game) { Game.new(DateTime.new(2014,12,21,12,5), :min, 2) }
+  let(:saturday_game) { Game.new(DateTime.new(2014,12,20,13,5), :min, 2) }
+  let(:thursday_night_game) { Game.new(DateTime.new(2014,12,18,17,5), :min, 3)}
 
   context '#day_game?' do
     it 'returns true for a day game' do

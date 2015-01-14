@@ -1,9 +1,8 @@
 class Game < ActiveRecord::Base
   attr_reader :series_id
 
-  def initialize(date, time, away, series_id)
-    @date = date
-    @time = time
+  def initialize(date_time, away, series_id)
+    @date_time = date_time
     @home = :chi
     @away = away
     @series_id = series_id
@@ -13,12 +12,12 @@ class Game < ActiveRecord::Base
   end
 
   def day_game?
-    return true if @time < 1700
+    return true if @date_time.strftime("%H%M").to_i < 1700
     false
   end
 
   def night_game?
-    return true if @time > 1700
+    return true if @date_time.strftime("%H%M").to_i > 1700
     false
   end
 
@@ -28,12 +27,13 @@ class Game < ActiveRecord::Base
   end
 
   def weekend?
-    return true if @date.cwday > 5
+    return true if @date_time.cwday > 5
     false
   end
 
   def weekday?
-    return true if @date.cwday <= 5
+    return true if @date_time.cwday <= 5
     false
   end
+
 end
