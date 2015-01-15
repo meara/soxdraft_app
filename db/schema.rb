@@ -11,19 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115015755) do
+ActiveRecord::Schema.define(version: 20150115031945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: true do |t|
     t.datetime "game_time"
-    t.string   "home"
-    t.string   "away"
     t.string   "up"
     t.string   "down"
     t.integer  "series_id"
     t.integer  "season_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
+  end
+
+  create_table "seasons", force: true do |t|
+    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,9 @@
 class Game < ActiveRecord::Base
 
   belongs_to :series
+  belongs_to :season
+  belongs_to :home_team, class_name: :team
+  belongs_to :away_team, class_name: :team
 
   def day_game?
     return true if game_time.strftime("%H%M").to_i < 1700
@@ -18,7 +21,7 @@ class Game < ActiveRecord::Base
   end
 
   def same_team?(game)
-    return true if away == game.away
+    return true if away_team_id == game.away_team_id
     false
   end
 
