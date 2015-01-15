@@ -4,7 +4,7 @@ RSpec.describe Game, :type => :model do
 
   let(:sunday_game) { Game.create(game_time: DateTime.new(2014,12,21,12,5), home: :chi, away: :min, series_id: 2) }
   let(:saturday_game) { Game.create(game_time: DateTime.new(2014,12,20,13,5), home: :chi, away: :min, series_id: 2) }
-  let(:thursday_night_game) { Game.create(game_time: DateTime.new(2014,12,18,17,5), home: :chi, away: :min, series_id: 3)}
+  let(:thursday_night_game) { Game.create(game_time: DateTime.new(2014,12,18,17,5), home: :chi, away: :det, series_id: 3)}
 
   context '#day_game?' do
     it 'returns true for a day game' do
@@ -50,6 +50,15 @@ RSpec.describe Game, :type => :model do
     end
     it 'returns false if games are not in same series' do
       expect(thursday_night_game.same_series?(sunday_game)).to eq false
+    end
+  end
+
+  context '#same_team?' do
+    it 'returns true if games have the same away team' do
+      expect(saturday_game.same_team?(sunday_game)).to eq true
+    end
+    it 'returns false if games do not have the same away team' do
+      expect(thursday_night_game.same_team?(sunday_game)).to eq false
     end
   end
 

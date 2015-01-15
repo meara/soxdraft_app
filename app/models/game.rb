@@ -17,6 +17,11 @@ class Game < ActiveRecord::Base
     false
   end
 
+  def same_team?(game)
+    return true if away == game.away
+    false
+  end
+
   def weekend?
     return true if game_time.cwday > 5
     false
