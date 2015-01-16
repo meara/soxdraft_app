@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150115035407) do
 
   create_table "seasons", force: true do |t|
     t.integer  "year"
+    t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

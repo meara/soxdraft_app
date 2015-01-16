@@ -49,3 +49,7 @@ end
 NL.each do |sym, city_name|
   Team.create(city: city_name[0], name: city_name[1], symbol: sym, league: :nl)
 end
+
+
+create_season = CreatesSeason.new('sample_draft.csv')
+create_season.create
