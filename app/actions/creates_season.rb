@@ -1,6 +1,11 @@
 require 'csv'
 
 class CreatesSeason
+
+  # this accessor exists solely for testing
+  # season probably shouldn't be writable but necessary for janky stub thing
+  attr_accessor :season
+
   def initialize(filename)
     @filename = filename
   end
@@ -33,6 +38,15 @@ class CreatesSeason
   # end
 
   def assign_series
+    games = @season.games.to_a.sort { |a,b| a.game_time <=> b.game_time }
+    games.each do |g|
+      away = g.away_team_id
+      puts g.away_team_id
+    end
+  end
+
+  def belongs_to_series(game)
+    team_series = Series.where(team_id: game.team_id)
   end
   
 end
