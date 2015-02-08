@@ -1,17 +1,12 @@
 require 'csv'
 
-class CreatesSeason
-
-  # this accessor exists solely for testing
-  # season probably shouldn't be writable but necessary for janky stub thing
-  attr_accessor :season
+class CreatesGames
 
   def initialize(filename)
     @filename = filename
   end
 
   def create
-    @season = Season.create(year: 2014)
     create_games
     assign_series
   end
@@ -26,9 +21,10 @@ class CreatesSeason
       game_time = datify(row[:date],row[:time])
       home_team_id = Team.find_by_symbol(:chi).id
       away_team_id = Team.find_by_symbol(row[:away].to_sym).id
+      season_id = 2014
       raise "Invalid team: #{row[away]}" unless away_team_id
 
-      @season.games.create(game_time: game_time, home_team_id: home_team_id, away_team_id: away_team_id)
+      Game.create(game_time: game_time, home_team_id: home_team_id, away_team_id: away_team_id, season_id: season_id)
     end
   end
 
